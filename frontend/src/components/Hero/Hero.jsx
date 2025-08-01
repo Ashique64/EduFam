@@ -11,6 +11,8 @@ const Hero = () => {
     const h1Ref = useRef(null);
     const imgRef = useRef(null);
     const contentItemsRef = useRef([]);
+    const heroRef = useRef(null);
+    const hasAnimated = useRef(false);
 
     const animateCounter = (el, target) => {
         let count = 0;
@@ -29,113 +31,153 @@ const Hero = () => {
     const startCounterAnimations = () => {
         countersRef.current.forEach((counter) => {
             if (counter) {
+                counter.textContent = "0";
+            }
+        });
+
+        countersRef.current.forEach((counter) => {
+            if (counter) {
                 const target = +counter.getAttribute("data-target");
                 animateCounter(counter, target);
             }
         });
     };
 
-    useEffect(() => {
-        if (h1Ref.current && imgRef.current) {
+    const resetElements = () => {
+        if (h1Ref.current) {
             gsap.set(h1Ref.current, {
                 scale: 0.3,
                 opacity: 0,
                 transformOrigin: "center center",
             });
+        }
 
+        if (imgRef.current) {
             gsap.set(imgRef.current, {
                 y: -50,
                 opacity: 0,
             });
-
-            contentItemsRef.current.forEach((item) => {
-                if (item) {
-                    gsap.set(item, {
-                        x: -30,
-                        opacity: 0,
-                    });
-                }
-            });
-
-            const tl = gsap.timeline();
-            tl.to(h1Ref.current, {
-                scale: 1,
-                opacity: 1,
-                duration: 1.2,
-                ease: "back.out(1.7)",
-                delay: 0.2,
-            })
-                .to(h1Ref.current, {
-                    scale: 1.05,
-                    duration: 0.3,
-                    ease: "power2.out",
-                })
-                .to(h1Ref.current, {
-                    scale: 1,
-                    duration: 0.3,
-                    ease: "power2.out",
-                })
-                .to(
-                    imgRef.current,
-                    {
-                        y: 0,
-                        opacity: 1,
-                        duration: 0.8,
-                        ease: "power3.out",
-                    },
-                    "-=0.2"
-                )
-                .to(
-                    contentItemsRef.current[0],
-                    {
-                        x: 0,
-                        opacity: 1,
-                        duration: 0.6,
-                        ease: "power2.out",
-                    },
-                    "-=0.3"
-                )
-                .to(
-                    contentItemsRef.current[1],
-                    {
-                        x: 0,
-                        opacity: 1,
-                        duration: 0.8,
-                        ease: "power2.out",
-                    },
-                    "-=0.4"
-                )
-                .to(
-                    contentItemsRef.current[2],
-                    {
-                        x: 0,
-                        opacity: 1,
-                        duration: 0.7,
-                        ease: "back.out(1.2)",
-                    },
-                    "-=0.5"
-                )
-                .to(
-                    contentItemsRef.current[3],
-                    {
-                        x: 0,
-                        opacity: 1,
-                        duration: 1.0,
-                        ease: "power3.out",
-                        onComplete: () => {
-                            // Start counter animations after stats container is fully visible
-                            setTimeout(() => {
-                                startCounterAnimations();
-                            }, 200); // Small delay to ensure the container is fully rendered
-                        }
-                    },
-                    "-=0.3"
-                );
         }
+
+        contentItemsRef.current.forEach((item) => {
+            if (item) {
+                gsap.set(item, {
+                    x: -30,
+                    opacity: 0,
+                });
+            }
+        });
+
+        countersRef.current.forEach((counter) => {
+            if (counter) {
+                counter.textContent = "0";
+            }
+        });
+    };
+
+    const runAnimation = () => {
+        const tl = gsap.timeline();
+        
+        tl.to(h1Ref.current, {
+            scale: 1,
+            opacity: 1,
+            duration: 1.2,
+            ease: "back.out(1.7)",
+            delay: 0.2,
+        })
+        .to(h1Ref.current, {
+            scale: 1.05,
+            duration: 0.3,
+            ease: "power2.out",
+        })
+        .to(h1Ref.current, {
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.out",
+        })
+        .to(
+            imgRef.current,
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power3.out",
+            },
+            "-=0.2"
+        )
+        .to(
+            contentItemsRef.current[0],
+            {
+                x: 0,
+                opacity: 1,
+                duration: 0.6,
+                ease: "power2.out",
+            },
+            "-=0.3"
+        )
+        .to(
+            contentItemsRef.current[1],
+            {
+                x: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power2.out",
+            },
+            "-=0.4"
+        )
+        .to(
+            contentItemsRef.current[2],
+            {
+                x: 0,
+                opacity: 1,
+                duration: 0.7,
+                ease: "back.out(1.2)",
+            },
+            "-=0.5"
+        )
+        .to(
+            contentItemsRef.current[3],
+            {
+                x: 0,
+                opacity: 1,
+                duration: 1.0,
+                ease: "power3.out",
+                onComplete: () => {
+                    setTimeout(() => {
+                        startCounterAnimations();
+                    }, 100);
+                }
+            },
+            "-=0.3"
+        );
+    };
+
+    useEffect(() => {
+
+        resetElements();
+
+
+        ScrollTrigger.create({
+            trigger: heroRef.current,
+            start: "top 80%", 
+            end: "bottom 20%", 
+            onEnter: () => {
+                resetElements();
+                runAnimation();
+            },
+            onEnterBack: () => {
+                resetElements();
+                runAnimation();
+            },
+        });
+
+        return () => {
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        };
     }, []);
 
     return (
-        <div className="hero" id="hero">
+        <div className="hero" id="hero" ref={heroRef}>
             <div className="gradient-overlay"></div>
             <div className="background-grid"></div>
 
@@ -151,7 +193,6 @@ const Hero = () => {
                         <div className="brand-title">
                             <h1 ref={h1Ref}>edufam</h1>
                             <img className="img-1" ref={imgRef} src="/Images/hero/img-2.png" alt="Image-1" />
-                            {/* <img className="img-2" src="/Images/hero/img-3.png" alt="Image-2" /> */}
                         </div>
                         <div className="content">
                             <div className="content-items">
