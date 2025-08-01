@@ -1,0 +1,367 @@
+#hero {
+    background: var(--primary-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    .gradient-overlay {
+        position: absolute;
+        inset: 0;
+        background: var(--overlay-gradient);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .background-grid {
+        position: absolute;
+        inset: 0;
+        background-image: var(--grid-gradient);
+        background-size: 40px 40px;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .floating-icons {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+
+        .icon {
+            position: absolute;
+            width: 50px;
+            opacity: 0.15;
+            animation-name: floatSideways;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            font-size: 30px;
+        }
+
+        .airplane {
+            top: 10%;
+            left: 40%;
+            animation-duration: 8s;
+            color: rgb(114, 210, 63);
+        }
+
+        .book {
+            top: 20%;
+            right: 55%;
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+
+        .star {
+            top: 30%;
+            left: 70%;
+            animation-duration: 7s;
+            animation-delay: 1s;
+            color: rgb(222, 20, 63);
+        }
+
+        .book {
+            top: 75%;
+            left: 45%;
+            animation-duration: 12s;
+            animation-delay: 3s;
+            color: rgb(240, 184, 18);
+        }
+    }
+
+    .hero-container {
+        .hero-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            .hero-col {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                .brand-title {
+                    width: 100%;
+                    position: relative;
+                    padding-top: 120px;
+                    h1 {
+                        text-align: center;
+                        font-size: 130px;
+                        text-transform: uppercase;
+                        margin: 0 0 10px 0;
+                        user-select: none;
+                        font-family: var(--secondary-font);
+                        font-weight: bolder;
+                        letter-spacing: 80px;
+                        color: rgba(255, 255, 255, 0.136);
+                        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                        opacity: 1;
+                    }
+
+                    .img-1 {
+                        position: absolute;
+                        top: 0px;
+                        left: 20px;
+                        object-fit: cover;
+                        width: 30%;
+                        height: auto;
+                        z-index: 4;
+                    }
+
+                    .img-2 {
+                        position: absolute;
+                        bottom: -100px;
+                        right: 80px;
+                        object-fit: cover;
+                        width: 30%;
+                        height: auto;
+                        z-index: 3;
+                    }
+                }
+
+                .content {
+                    width: 100%;
+                    display: flex;
+                    justify-content: start;
+
+                    .content-items {
+                        max-width: 500px;
+                        padding: 10px;
+                        h5 {
+                            color: var(--accent-color);
+                            font-family: var(--secondary-font);
+                        }
+
+                        p {
+                            color: var(--text-secondary);
+                            font-family: var(--para-font);
+                        }
+
+                        .hero-buttons {
+                            display: flex;
+                            gap: 20px;
+
+                            .btn-1 {
+                                background: transparent;
+                                border: 2px solid var(--accent-color);
+                                color: var(--accent-color);
+                                padding: 10px 20px;
+                                border-radius: 4px;
+                                font-family: var(--secondary-font);
+                                cursor: pointer;
+                                transition: 0.3s ease-in-out;
+
+                                &:hover {
+                                    background: var(--accent-color);
+                                    color: var(--secondary-color);
+                                }
+                            }
+                            .btn-2 {
+                                background: var(--secondary-color);
+                                border: 2px solid var(--secondary-color);
+                                color: var(--para-color);
+                                padding: 10px 20px;
+                                border-radius: 4px;
+                                font-family: var(--secondary-font);
+                                cursor: pointer;
+                                transition: 0.3s ease-in-out;
+
+                                &:hover {
+                                    background: transparent;
+                                    color: var(--secondary-color);
+                                }
+                            }
+                        }
+
+                        .stats-container {
+                            display: flex;
+                            gap: 40px;
+                            margin-top: 40px;
+
+                            .stat {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                color: var(--accent-color);
+
+                                .items {
+                                    .counter {
+                                        font-family: var(--primary-font);
+                                        font-size: 48px;
+                                        font-weight: 900;
+                                        line-height: 1;
+                                    }
+
+                                    span {
+                                        font-size: 36px;
+                                        margin-left: 2px;
+                                    }
+
+                                    p {
+                                        font-family: var(--para-font);
+                                        font-size: 16px;
+                                        color: var(--text-secondary);
+                                        margin-top: 5px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes floatSideways {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(15px);
+    }
+}
+
+@media (max-width: 1199px) {
+    #hero {
+        .hero-container {
+            .hero-row {
+                .hero-col {
+                    .brand-title {
+                        h1 {
+                            font-size: 120px;
+                            letter-spacing: 65px;
+                        }
+
+                        .img-1 {
+                            top: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    #hero {
+        .hero-container {
+            .hero-row {
+                .hero-col {
+                    .brand-title {
+                        h1 {
+                            font-size: 100px;
+                            letter-spacing: 45px;
+                        }
+
+                        .img-1 {
+                            top: 50px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    #hero {
+        padding: 10px;
+        .hero-container {
+            .hero-row {
+                flex-direction: column;
+
+                .hero-col {
+                    align-items: center;
+                    text-align: center;
+
+                    .brand-title {
+                        h1 {
+                            font-size: 75px;
+                            letter-spacing: 15px;
+                        }
+
+                        .img-1 {
+                            top: 70px;
+                        }
+                    }
+
+                    .content {
+                        max-width: 100%;
+                        justify-content: center;
+                        .content-items {
+                            h5 {
+                                font-size: 22px;
+                            }
+
+                            p {
+                                font-size: 14px;
+                            }
+
+                            .hero-buttons {
+                                justify-content: center;
+                                gap: 10px;
+
+                                .btn {
+                                    font-size: 14px;
+                                    padding: 10px 18px;
+                                }
+                            }
+
+                            .stats-container {
+                                justify-content: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 549px) {
+    #hero {
+        .hero-container {
+            .hero-row {
+                .hero-col {
+                    .brand-title {
+                        h1 {
+                            font-size: 60px;
+                            letter-spacing: 7px;
+                        }
+
+                        .img-1 {
+                            top: 85px;
+                        }
+                    }
+
+                    .content {
+                        h5 {
+                            font-size: 18px;
+                        }
+
+                        p {
+                            font-size: 13px;
+                        }
+
+                        .hero-buttons {
+                            flex-direction: column;
+                            gap: 12px;
+
+                            .btn {
+                                width: 100%;
+                                font-size: 16px;
+                                padding: 12px 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

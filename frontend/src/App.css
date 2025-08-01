@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* :root {
+  --primary-color: #4a90e2;
+  --primary-gradient: linear-gradient(120deg, #10A6DD 0%, #095977 100%);
+  --primary-gradient: linear-gradient(120deg, #095977 0%, #10A6DD 100%);
+  --secondary-color: #50e3c2;
+  --text-color: #333;
+  --background-color: #f5f5f5;
+  
+} */
+
+:root {
+    --primary-color: #2b4c5e;
+    --primary-color: #24507b;
+    --primary-dark: #1e3a47;
+    --secondary-color: #ffffff;
+    --secondary-light: #fafbfc;
+    --accent-color: #e67e22;
+    --text-primary: #1e3a47;
+    --text-secondary: #7f8c8d;
+    --border-color: #e8ecef;
+
+    --primary-font: "Bebas Neue", sans-serif;
+    --secondary-font: "Goldman", sans-serif;
+    --para-font: "Mozilla Headline", sans-serif;
+
+    --overlay-gradient: linear-gradient(135deg, rgba(230, 126, 34, 0.15), rgba(36, 80, 123, 0.15));
+    --grid-gradient: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
