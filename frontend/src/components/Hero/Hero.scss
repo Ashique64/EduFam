@@ -6,6 +6,7 @@
     align-items: center;
     position: relative;
     overflow: hidden;
+    padding: 40px 0px;
 
     .gradient-overlay {
         position: absolute;
@@ -163,7 +164,7 @@
                             .btn-2 {
                                 background: var(--secondary-color);
                                 border: 2px solid var(--secondary-color);
-                                color: var(--para-color);
+                                color: var(--primary-dark);
                                 padding: 10px 20px;
                                 border-radius: 4px;
                                 font-family: var(--secondary-font);

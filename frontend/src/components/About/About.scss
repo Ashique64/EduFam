@@ -1,0 +1,154 @@
+#about {
+    background: var(--primary-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    .gradient-overlay {
+        position: absolute;
+        inset: 0;
+        background: var(--overlay-gradient-2);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .background-grid {
+        position: absolute;
+        inset: 0;
+        background-image: var(--grid-gradient);
+        background-size: 40px 40px;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .about-icons {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+
+        .icon {
+            position: absolute;
+            width: 50px;
+            opacity: 0.13;
+            font-size: 32px;
+            animation-name: aboutSideways;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+        .team {
+            top: 12%;
+            left: 20%;
+            color: #3b82f6;
+            animation-duration: 9s;
+        }
+
+        .mission {
+            top: 60%;
+            left: 15%;
+            color: #f59e42;
+            animation-duration: 11s;
+            animation-delay: 1.5s;
+        }
+
+        .vision {
+            top: 25%;
+            left: 70%;
+            color: #a855f7;
+            animation-duration: 8s;
+            animation-delay: 0.5s;
+        }
+
+        .values {
+            top: 75%;
+            left: 60%;
+            color: #10b981;
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+
+        .growth {
+            top: 40%;
+            left: 50%;
+            color: #ef4444;
+            animation-duration: 12s;
+            animation-delay: 1s;
+        }
+    }
+
+    .about-container {
+        .about-row {
+            overflow: hidden;
+            .about-col-1 {
+                position: relative;
+                .about-title {
+                    font-size: 2.5rem;
+                    color: var(--secondary-color);
+                    font-family: var(--primary-font);
+                    text-align: start;
+                    margin-bottom: 1rem;
+                    font-weight: 700;
+
+                    .accent-line {
+                        display: inline-block;
+                        width: 100px;
+                        height: 2px;
+                        background: var(--accent-color);
+                    }
+                }
+
+                .about-description {
+                    color: var(--text-secondary);
+                    font-family: var(--para-font);
+                }
+
+                .btn-learn-more {
+                    background: transparent;
+                    border: 2px solid var(--accent-color);
+                    color: var(--accent-color);
+                    padding: 10px 20px;
+                    border-radius: 4px;
+                    font-family: var(--secondary-font);
+                    cursor: pointer;
+                    transition: 0.3s ease-in-out;
+
+                    &:hover {
+                        background: var(--accent-color);
+                        color: var(--secondary-color);
+                    }
+                }
+            }
+
+            .about-col-2 {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px 30px;
+
+                img {
+                    max-height: 440px;
+                    width: auto;
+                    object-fit: cover;
+                    transition: transform 0.3s ease-in-out;
+                }
+            }
+        }
+    }
+}
+
+@keyframes aboutSideways {
+    0% {
+        transform: translateY(0px) scale(1);
+    }
+    50% {
+        transform: translateY(-30px) scale(1.08);
+    }
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+}

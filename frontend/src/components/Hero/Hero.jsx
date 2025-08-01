@@ -12,7 +12,6 @@ const Hero = () => {
     const imgRef = useRef(null);
     const contentItemsRef = useRef([]);
 
-    // Function to animate counters
     const animateCounter = (el, target) => {
         let count = 0;
         const increment = target / 100;
@@ -27,7 +26,6 @@ const Hero = () => {
         }, 20);
     };
 
-    // Function to start counter animations
     const startCounterAnimations = () => {
         countersRef.current.forEach((counter) => {
             if (counter) {

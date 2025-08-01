@@ -23,9 +23,10 @@
     --primary-color: #24507b;
     --primary-dark: #1e3a47;
     --secondary-color: #ffffff;
+    /* --secondary-color: #e67e22; */
     --secondary-light: #fafbfc;
     --accent-color: #e67e22;
-    --text-primary: #1e3a47;
+    /* --accent-color: #ffffff; */
     --text-secondary: #7f8c8d;
     --border-color: #e8ecef;
 
@@ -33,7 +34,18 @@
     --secondary-font: "Goldman", sans-serif;
     --para-font: "Mozilla Headline", sans-serif;
 
-    --overlay-gradient: linear-gradient(135deg, rgba(230, 126, 34, 0.15), rgba(36, 80, 123, 0.15));
+    --overlay-gradient: linear-gradient(180deg, rgba(240, 214, 190, 0.15), rgba(36, 80, 123, 0.15));
+    /* --overlay-gradient-2: linear-gradient(135deg, rgba(36, 123, 160, 0.1), rgba(112, 71, 235, 0.1));
+    --overlay-gradient-2: linear-gradient(120deg, rgba(255, 175, 189, 0.12), rgba(100, 216, 255, 0.12));
+    --overlay-gradient-2: linear-gradient(120deg, rgba(48, 48, 230, 0.12), rgba(213, 242, 251, 0.12)); */
+    --overlay-gradient-2: linear-gradient(0deg, rgba(240, 214, 190, 0.15), rgba(36, 80, 123, 0.15));
+
     --grid-gradient: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    --grid-gradient-2: linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    --grid-gradient-2: linear-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+    --grid-gradient-2: linear-gradient(rgba(36, 123, 160, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(36, 123, 160, 0.06) 1px, transparent 1px);
 }
