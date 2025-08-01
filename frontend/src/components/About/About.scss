@@ -1,11 +1,12 @@
 #about {
     background: var(--primary-color);
-    min-height: 100vh;
+    // min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     overflow: hidden;
+    padding: 100px 0 50px 0;
 
     .gradient-overlay {
         position: absolute;
@@ -42,7 +43,7 @@
 
         .team {
             top: 12%;
-            left: 20%;
+            right: 20%;
             color: #3b82f6;
             animation-duration: 9s;
         }
@@ -57,7 +58,7 @@
 
         .vision {
             top: 25%;
-            left: 70%;
+            left: 5%;
             color: #a855f7;
             animation-duration: 8s;
             animation-delay: 0.5s;
@@ -65,7 +66,7 @@
 
         .values {
             top: 75%;
-            left: 60%;
+            right: 10%;
             color: #10b981;
             animation-duration: 10s;
             animation-delay: 2s;
@@ -135,6 +136,16 @@
                     width: auto;
                     object-fit: cover;
                     transition: transform 0.3s ease-in-out;
+                    z-index: 2;
+                }
+
+                .about-img-2 {
+                    position: absolute;
+                    z-index: 1;
+                    object-fit: cover;
+                    width: 60%;
+                    height: auto;
+                    animation: rotate360 20s linear infinite;
                 }
             }
         }
@@ -150,5 +161,47 @@
     }
     100% {
         transform: translateY(0px) scale(1);
+    }
+}
+
+@keyframes rotate360 {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    25% {
+        transform: rotate(90deg) scale(0.8);
+    }
+    50% {
+        transform: rotate(180deg) scale(1);
+    }
+    75% {
+        transform: rotate(270deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+@media (max-width:576px) {
+    #about {
+
+        .about-container {
+            .about-row {
+                .about-col-1 {
+                    text-align: start;
+                    margin-bottom: 20px;
+
+                    .about-title {
+                        font-size: 2rem;
+                    }
+                }
+
+                .about-col-2 {
+                    img {
+                        max-height: 360px;
+                    }
+                }
+            }
+        }
     }
 }

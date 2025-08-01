@@ -12,7 +12,7 @@ const Hero = () => {
     const imgRef = useRef(null);
     const contentItemsRef = useRef([]);
     const heroRef = useRef(null);
-    const hasAnimated = useRef(false);
+    
 
     const animateCounter = (el, target) => {
         let count = 0;
@@ -160,7 +160,7 @@ const Hero = () => {
         ScrollTrigger.create({
             trigger: heroRef.current,
             start: "top 80%", 
-            end: "bottom 20%", 
+            end: "bottom 0%", 
             onEnter: () => {
                 resetElements();
                 runAnimation();
